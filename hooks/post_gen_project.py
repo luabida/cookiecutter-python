@@ -19,7 +19,6 @@ def post_gen():
 
     git_https_origin = http2ssh("{{cookiecutter.git_https_origin}}")
     git_https_upstream = http2ssh("{{cookiecutter.git_https_upstream}}")
-    git_main_branch = http2ssh("{{cookiecutter.git_main_branch}}")
     git_new_branch = "add-initial-structure"
 
     if git_https_origin != "git@github.com:zoro_roronoa/origin":

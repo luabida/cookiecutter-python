@@ -1,7 +1,7 @@
 {
   "author_full_name": "Roronoa Zoro",
   "author_email": "zoro@one.piece",
-  "project_name": "OSL Python package",
+  "project_name": "My Python Package",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
   "package_slug": "{{ cookiecutter.project_slug.lower().replace('-', '_') }}",
   "project_short_description": "OSL Python Package contains all the boilerplate you need to create a Python package.",
@@ -15,7 +15,11 @@
     "GNU General Public License v3",
     "Other"
   ],
-  "command_line_interface": ["Click", "Argparse", "No command-line interface"],
+  "command_line_interface": [
+    "Click", 
+    "Argparse", 
+    "No command-line interface"
+  ],
   "test_library": [
     "pytest"
   ],
