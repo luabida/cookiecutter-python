@@ -5,24 +5,30 @@ import subprocess
 
 PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
 
+
 {% if cookiecutter.documentation_engine == 'mkdocs' -%}
 DOC_SPEC_DIR = f'{PROJECT_DIRECTORY}/docs-mkdocs'
 UNUSED_DOCS_DIRS = [
     f'{PROJECT_DIRECTORY}/docs-sphinx', 
     f'{PROJECT_DIRECTORY}/docs-jupyter-book'
 ]
+shutil.move(f'{PROJECT_DIRECTORY}/images', f'{DOC_SPEC_DIR}')
+shutil.move(f'{DOC_SPEC_DIR}/mkdocs.yaml', PROJECT_DIRECTORY)
+shutil.move(f'{DOC_SPEC_DIR}/images/favicon.ico', f'{DOC_SPEC_DIR}')
 {%- elif cookiecutter.documentation_engine == 'sphinx' -%}
 DOC_SPEC_DIR = f'{PROJECT_DIRECTORY}/docs-sphinx'
 UNUSED_DOCS_DIRS = [
     f'{PROJECT_DIRECTORY}/docs-mkdocs', 
     f'{PROJECT_DIRECTORY}/docs-jupyter-book'
 ]
+shutil.move(f'{PROJECT_DIRECTORY}/images', f'{DOC_SPEC_DIR}')
 {%- elif cookiecutter.documentation_engine == 'jupyter-book' -%}
 DOC_SPEC_DIR = f'{PROJECT_DIRECTORY}/docs-jupyter-book'
 UNUSED_DOCS_DIRS = [
     f'{PROJECT_DIRECTORY}/docs-sphinx', 
     f'{PROJECT_DIRECTORY}/docs-mkdocs'
 ]
+shutil.move(f'{PROJECT_DIRECTORY}/images', f'{DOC_SPEC_DIR}')
 {% endif %}
 
 def remove_unused_docs_dirs():

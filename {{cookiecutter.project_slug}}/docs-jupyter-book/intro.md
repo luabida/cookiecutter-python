@@ -1,3 +1,3 @@
-![LOGO](../images/logo.png)
+![LOGO](images/logo.png)
 
 # {{ cookiecutter.project_name }}

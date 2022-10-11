@@ -16,6 +16,18 @@ def context():
         "documentation_engine": "sphinx",
     }
 
+@pytest.fixture
+def mkdocs():
+    return {
+        "documentation_engine": "mkdocs",
+    }
+
+@pytest.fixture
+def jupyter():
+    return {
+        "documentation_engine": "jupyter-book",
+    }
+
 
 def test_bake_project(cookies):
     result = cookies.bake()
@@ -52,3 +64,21 @@ def test_project_name_with_example_context(cookies, context):
     with open(README_FILE) as f:
         title = f.readline().rstrip()
         assert title == "# Example"
+
+
+def test_documentations_generation_with_mkdocs(cookies, mkdocs):
+    result = cookies.bake(extra_context={**mkdocs})
+    assert result.exit_code == 0
+    assert result.exception is None
+    MKDOCS_CONF_PATH = Path(result.project_path) / 'mkdocs.yaml'
+    mkdocs_file_exists = Path.is_file(MKDOCS_CONF_PATH)
+    assert mkdocs_file_exists
+
+
+def test_documentations_generation_with_jupyter_book(cookies, jupyter):
+    result = cookies.bake(extra_context={**jupyter})
+    assert result.exit_code == 0
+    assert result.exception is None
+    JUPYTER_CONF_PATH = Path(result.project_path) / 'docs' / '_config.yaml'
+    jupyter_file_exists = Path.is_file(JUPYTER_CONF_PATH)
+    assert jupyter_file_exists
