@@ -24,7 +24,7 @@ theme:
     scheme: slate
     primary: teal
     accent: lime
-  # custom_dir: docs/overrides
+  custom_dir: docs/material
 plugins:
   - search
   - macros
