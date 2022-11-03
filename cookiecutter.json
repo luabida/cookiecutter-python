@@ -29,9 +29,13 @@
   "test_library": [
     "pytest"
   ],
-  "git_username": "zoro_roronoa",
+  "git_username": "github_username",
   "git_https_origin": "",
   "git_https_upstream": "",
   "git_main_branch": "main",
-  "pypi_username": "{{ cookiecutter.git_username }}"
+  "pypi_username": "{{ cookiecutter.git_username }}",
+
+  "_copy_without_render": [
+    "docs-mkdocs/material"
+  ]
 }

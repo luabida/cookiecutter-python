@@ -47,9 +47,13 @@ test: ## run tests quickly with the default Python
 	pytest
 
 {% if cookiecutter.documentation_engine == 'mkdocs' -%}
-.PHONY:docs
-docs:
-	mkdocs build --config-file docs/mkdocs.yaml
+.PHONY:docs-build
+docs-build:
+	mkdocs build --config-file mkdocs.yaml
+
+.PHONY:docs-serve
+docs-serve:
+	mkdocs serve --config-file mkdocs.yaml
 
 {%- elif cookiecutter.documentation_engine == 'sphinx' -%}
 .PHONY:docs
@@ -58,7 +62,6 @@ docs:
 	$(SPHINXBUILD) "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 {%- elif cookiecutter.documentation_engine == 'jupyter-book' -%}
-#NOTE: This command will fail if ({{cookiecutter.git_https_origin}})<- this is not a correct URL.
 .PHONY:docs
 docs:
 	jupyter-book build --all docs/
@@ -67,3 +70,7 @@ docs:
 .PHONY:build
 build:
 	poetry build
+
+.PHONY:install
+install:
+	poetry install

@@ -7,7 +7,7 @@ exclude_patterns            : []
 only_build_toc_files        : true
 
 html:
-  favicon                   : "images/favicon.ico"  # A path to a favicon image
+  favicon                   : "favicon.ico"  # A path to a favicon image
   google_analytics_id       : ""  # A GA id that can be used to track book views.
   use_edit_page_button      : false
   use_issues_button         : false
